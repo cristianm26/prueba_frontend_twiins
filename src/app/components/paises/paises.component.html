@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="container mt-4">
+
+
+    <div class="row">
+        <div class="col-8">
+            <h3 class="text-center">Listado de Paises</h3>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2" type="button" routerLink='create'> Nuevo Pais</button>
+
+    </div>
+</div>
+
+<div class="container mt-2">
+    <table class="table" *ngIf="paises.length>0">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">IDE Pais</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nacionacionalidad</th>
+                <th scope="col"> Estado </th>
+                <th>
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pais of paises">
+
+                <td>{{pais.cod_pais}}</td>
+                <td>{{pais.ide_pais}}</td>
+                <td>{{pais.nom_pais}}</td>
+                <td>{{pais.nac_pais}}</td>
+                <td>{{pais.est_pais}}</td>
+                <td>
+                    <i [routerLink]="['edit', pais.cod_pais]" class="fas fa-edit"></i>
+                    <i class="fa fa-trash" (click)="deletePais(pais.cod_pais)"></i>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <h5 *ngIf="paises.length==0">No hay paises para mostrar</h5>
+</div>

@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <form [formGroup]="paisForm" (ngSubmit)="guardar()">
+
+        <div class="mb-3">
+            <label for="ide_pais" class="form-label">Ide del Pais</label>
+            <input type="text" class="form-control" id="ide_pais" formControlName="ide_pais"
+                placeholder="Ingrese el Ide del Pais">
+            <span class="text-danger ms-2"
+                *ngIf="paisForm.get('ide_pais')?.hasError('required') && paisForm.get('ide_pais')?.touched">
+                El Ide <strong> es requerido</strong>
+            </span>
+            <span class="text-danger ms-2"
+                *ngIf="paisForm.get('ide_pais')?.hasError('maxlength') && paisForm.get('ide_pais')?.touched">
+                El Ide debe tener <strong> como máximo 3 carácteres</strong>
+            </span>
+        </div>
+        <div class="mb-3">
+            <label for="nom_pais" class="form-label">Nombre del Pais</label>
+            <input type="text" class="form-control" id="nom_pais" formControlName="nom_pais"
+                placeholder="Ingrese el nombre del Pais">
+            <span class="text-danger ms-2"
+                *ngIf="paisForm.get('nom_pais')?.hasError('required') && paisForm.get('nom_pais')?.touched">
+                El nombre <strong> es requerido</strong>
+            </span>
+            <span class="text-danger ms-2"
+                *ngIf="paisForm.get('nom_pais')?.hasError('maxlength') && paisForm.get('nom_pais')?.touched">
+                El nombre debe tener <strong> como máximo 60 carácteres</strong>
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label for="nac_pais" class="form-label"> Nacionalidad</label>
+            <input type="text" class="form-control" id="nac_pais" formControlName="nac_pais"
+                placeholder="Ingrese la nacionalidad del Pais">
+            <span class="text-danger ms-2"
+                *ngIf="paisForm.get('nac_pais')?.hasError('required') && paisForm.get('nac_pais')?.touched">
+                La nacionalidad <strong> es requerido</strong>
+            </span>
+            <span class="text-danger ms-2"
+                *ngIf="paisForm.get('nac_pais')?.hasError('maxlength') && paisForm.get('nac_pais')?.touched">
+                La nacionalidaddebe tener <strong> como máximo 60 carácteres</strong>
+            </span>
+        </div>
+        <div class="mb-3">
+            <label for="est_pais" class="form-label">Estado</label>
+            <select class="form-select" aria-label="Default select example" formControlName="est_pais">
+                <option selected>Seleccione una Opción</option>
+                <option value="A">Americana</option>
+                <option value="E">Europea</option>
+                <option value="S">Asiatica</option>
+                <option value="F">Africana</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button class="btn btn-danger ms-2" routerLink="/">Cancelar</button>
+    </form>
+</div>
